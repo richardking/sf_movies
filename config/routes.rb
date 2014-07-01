@@ -55,4 +55,8 @@ Rails.application.routes.draw do
   #   end
   #
   root 'home#index'
+
+  namespace :api do
+    resources :movies
+  end
 end
