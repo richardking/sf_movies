@@ -57,6 +57,8 @@ Rails.application.routes.draw do
   root 'home#index'
 
   namespace :api do
-    resources :movies
+    get 'movies' => 'movies#index'
+    get 'movies/:title' => 'movies#show'
+    # resources :movies
   end
 end
