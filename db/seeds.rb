@@ -7,10 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 
-%w(Director Writer Actor).each do |name|
-  Role.create(name: name)
-end
-
 MovieImporter.new.import_all
 
 Geolocator.new.geolocate_all

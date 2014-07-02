@@ -11,13 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701001947) do
-
-  create_table "companies", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20140630234356) do
 
   create_table "locations", force: true do |t|
     t.string   "name"
@@ -33,35 +27,9 @@ ActiveRecord::Schema.define(version: 20140701001947) do
     t.integer "location_id"
   end
 
-  create_table "movie_participants", force: true do |t|
-    t.integer  "movie_id"
-    t.integer  "person_id"
-    t.integer  "role_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "movie_participants", ["movie_id", "person_id", "role_id"], name: "index_movie_participants_on_movie_id_and_person_id_and_role_id", unique: true, using: :btree
-
   create_table "movies", force: true do |t|
     t.string   "title"
     t.integer  "release_year"
-    t.integer  "production_company_id"
-    t.integer  "distributor_id"
-    t.integer  "director_id"
-    t.integer  "writer_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "people", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "roles", force: true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

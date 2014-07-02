@@ -8,83 +8,17 @@
       #map-canvas { height: 100% }
     </style>
       <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+      <script src="//code.jquery.com/jquery-1.10.2.js"></script>
       <script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCV2-XJy4Sn8VxdUXJnEvIQxShqQYIPObI">
-    </script>
-    <script type="text/javascript">
-
-    var map;
-    var markers = [];
-
-$(document).on("click", "#foo", function () {
-    console.log($("#movie").val())
-
-    deleteMarkers();
-
-    $.get("/api/movies/"+$("#movie").val(), function( data ) {
-      var locations_ary = data.locations;
-      var center_coords = new google.maps.LatLng(data.center[0], data.center[1]);
-      map.panTo(center_coords);
-      for ( var i = 0; i < locations_ary.length; i++ ) {
-      var myLatlng = new google.maps.LatLng(locations_ary[i].coordinates[0], locations_ary[i].coordinates[1]);
-      addMarker(myLatlng, locations_ary[i].name);
-      }
-      })
-
-
-    });
-
-function setAllMap(map) {
-  for ( i = 0; i < markers.length; i++ ) {
-    markers[i].setMap(map);
-  }
-}
-
-
-function addMarker(location, title) {
-    var marker = new google.maps.Marker({
-            position: location,
-            map: map,
-            title: title
-                  });
-      markers.push(marker);
-}
-
-function clearMarkers() {
-  setAllMap(null)
-}
-
-function deleteMarkers() {
-  clearMarkers();
-  markers = [];
-}
-
-  var availableTags;
-  $.get("/api/movies", function( data ) {
-      availableTags = data
-      $( "#movie" ).autocomplete({
-  source: availableTags
-  });
-      })
-  function initialize() {
-    var mapOptions = {
-  center: new google.maps.LatLng(37.7577, -122.4376),
-          zoom: 12
-    };
-    map = new google.maps.Map(document.getElementById("map-canvas"),
-        mapOptions);
-  }
-  google.maps.event.addDomListener(window, "load", initialize);
-    </script>
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCV2-XJy4Sn8VxdUXJnEvIQxShqQYIPObI"></script>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </head>
   <body>
     <div class="ui-widget">
       <form>
         <label for="movie">Enter Movie Title: </label>
         <input id="movie">
-        <input id="foo" type="button" value="Submit" />
+        <input id="submit" type="button" value="Submit" />
       </form>
       </div>
     <div id="map-canvas"/>
