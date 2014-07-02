@@ -31,7 +31,6 @@ function setAllMap(map) {
   }
 }
 
-
 function addMarker(location, title) {
   var marker = new google.maps.Marker({
     position: location,

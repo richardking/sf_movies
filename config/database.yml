@@ -2,8 +2,11 @@ default: &default
   adapter: mysql2
   pool: 5
   timeout: 5000
-  username: root
-  password:
+  host: <%= ENV["DOCKERDB_PORT_3306_TCP_ADDR"] || 'localhost' %>
+  port: <%= ENV["DOCKERDB_PORT_3306_TCP_PORT"] || '3306' %>
+  username: admin
+  # username: root
+  password: <%= ENV["DOCKERDB_ENV_MYSQL_PASS"] %>
 
 development:
   <<: *default
@@ -18,4 +21,9 @@ test:
 
 production:
   <<: *default
-  database: sf_movies_prod
+  database: <%= ENV['RDS_DB_NAME'] %>
+  pool: 5
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>
