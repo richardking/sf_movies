@@ -6,6 +6,7 @@ It saves the movies and locations into the database.
 
 Then on the front-end, the user can input a movie title (e.g. 'The Rock'), and the app will mark each of the film's SF locations on a Google map. It also centers the map onto the middle of all of the locations.
 
+Hovering over each map marker displays more details about the location.
 
 ### Requirements
 

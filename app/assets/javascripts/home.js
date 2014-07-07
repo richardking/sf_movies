@@ -35,27 +35,28 @@ $(function(){
     });
   }
 
-  function initialize() {
-    $.get("/api/movies", function( movieTitles ) {
-      $( "#movie" ).autocomplete({
-        source: movieTitles
-      });
+  $.get("/api/movies", function( movieTitles ) {
+    $( "#movie" ).autocomplete({
+      source: movieTitles
     });
+  });
+
+  $(document).on("submit", "form", function() {
+    searchMovie();
+    return false;
+  });
+
+  $(document).on("click", "#submit", function () {
+    searchMovie();
+  });
+
+  function initialize() {
     var mapOptions = {
       center: new google.maps.LatLng(SF_LAT, SF_LNG),
       zoom: 12
     };
     map = new google.maps.Map(document.getElementById("map-canvas"),
         mapOptions);
-
-    $(document).on("submit", "form", function() {
-      searchMovie();
-      return false;
-    });
-
-    $(document).on("click", "#submit", function () {
-      searchMovie();
-    });
   }
   google.maps.event.addDomListener(window, "load", initialize);
 });
