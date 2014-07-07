@@ -18,7 +18,7 @@ Hovering over each map marker displays more details about the location.
 * clone repo
 * ```bundle install```
 * ```rake db:migrate```
-* ```rake db:seed``` (downloads movie data and geolocates the locations)
+* ```rake db:seed``` (downloads movie data [lib/movie_importer.rb] and geolocates the locations [lib/geolocator.rb])
 * ``` rails s```
 
 ### API endpoints
